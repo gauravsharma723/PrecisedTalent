@@ -8,6 +8,7 @@ import { Briefcase, Star, StarHalf, Users, UserRoundCog, Building2, Bookmark, Sc
 import { FaStar, FaSuitcase, FaMapMarkerAlt } from "react-icons/fa";
 import axios from 'axios';
 import { getImageUrl } from '@/utils/getImageUrl';
+import { useAuth } from '@/contexts/AuthContext';
 //import { useParams } from 'react-router-dom';
 
 
@@ -32,6 +33,14 @@ const JobDetailsCard = ({
     const roundedRating = Math.round(companyRating * 2) / 2;
     const fullStars = Math.floor(roundedRating);
     const hasHalfStar = roundedRating % 1 !== 0;
+
+    // const isLoggedIn = Boolean(localStorage.getItem('token'));
+
+
+    const { user } = useAuth();
+    const isLoggedIn = Boolean(user);
+    //console.log('Is user logged in?', isLoggedIn);
+
 
     return (
         <motion.div
@@ -104,12 +113,16 @@ const JobDetailsCard = ({
                     </div>
 
                     <div className="flex gap-4">
-                        <button className="px-4 py-2 border border-blue-600 rounded-full text-blue-600 hover:bg-blue-50" onClick={() => {
-                            setModalType('register');
-                            setModalOpen(true);
-                        }}>
-                            Register to apply
-                        </button>
+                        {
+                            !isLoggedIn && (<button className="px-4 py-2 border border-blue-600 rounded-full text-blue-600 hover:bg-blue-50" onClick={() => {
+                                setModalType('register');
+                                setModalOpen(true);
+                            }}>
+                                Register to apply
+                            </button>)
+                        }
+
+
                         <button className="px-4 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 flex items-center" onClick={() => {
                             setModalType('apply');
                             setModalOpen(true);

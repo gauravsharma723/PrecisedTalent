@@ -14,9 +14,9 @@ const router = express.Router();
 router.get('/', getJobs);
 
 // GET /api/jobs/:id - Fetch job by ID
-// router.get('/:id', getJobById);
+router.get('/:id', getJobById);
 
-router.get('/jobs/:id', getJobById);
+//router.get('/jobs/:id', getJobById);
 
 // POST /api/jobs - Create job (requires auth)
 router.post('/', verifyToken, createJob);

@@ -12,6 +12,8 @@ import { motion } from 'framer-motion';
 import axios from 'axios';
 import JobListCard from '@/components/cards/JobListCard';
 
+const initialJobs = [];
+
 // const initialJobs = [
 //   { id: '1', title: 'Logistics Coordinator', company: 'Global Trans Inc.', location: 'New York, NY', industry: 'Freight Forwarding', description: 'Manage and coordinate international shipments, ensuring timely delivery and compliance. Requires 2+ years experience.', postedDate: '2025-05-20' },
 //   { id: '2', title: 'Freight Broker', company: 'Speedy Logistics LLC', location: 'Chicago, IL', industry: 'Transportation', description: 'Connect shippers with carriers, negotiate rates, and manage freight movements. Strong sales skills needed.', postedDate: '2025-05-18' },
